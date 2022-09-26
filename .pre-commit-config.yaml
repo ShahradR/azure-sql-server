@@ -53,7 +53,7 @@ repos:
         language: node
         types: [text]
         additional_dependencies: [alex]
-        exclude: ^CODE_OF_CONDUCT.md$
+        exclude: ^(CODE_OF_CONDUCT.md|package-lock.json)$
         stages: [commit]
       - id: dockerfile-provides-entrypoint
         name: Vale
