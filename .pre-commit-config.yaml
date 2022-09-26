@@ -60,6 +60,27 @@ repos:
         language: docker_image
         entry: jdkato/vale:latest
 
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v7.24.0
+    hooks:
+      - id: eslint
+        name: ESLint
+        files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
+        types: [file]
+        additional_dependencies:
+          - jest@29.0.3
+          - eslint@8.24.0
+          - typescript@4.8.3
+          - eslint-config-prettier@8.5.0
+          - eslint-config-standard@17.0.0
+          - eslint-plugin-import@2.26.0
+          - eslint-plugin-jest@26.1.5
+          - eslint-plugin-node@11.1.0
+          - eslint-plugin-promise@6.0.1
+          - eslint-plugin-tsdoc@0.2.16
+          - "@typescript-eslint/eslint-plugin@5.38.0"
+          - "@typescript-eslint/parser@5.38.0"
+
   - repo: https://github.com/Yelp/detect-secrets
     rev: v1.3.0
     hooks:
