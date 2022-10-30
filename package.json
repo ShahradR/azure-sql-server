@@ -1,10 +1,15 @@
 {
-  "name": "cdktf",
+  "name": "@shahradr/azure-sql-server",
   "version": "1.0.0",
   "main": "main.js",
   "types": "main.ts",
   "license": "MIT",
-  "private": true,
+  "repository": "https://github.com/ShahradR/azure-sql-server.git",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/",
+    "access": "restricted"
+  },
+  "private": false,
   "scripts": {
     "get": "cdktf get",
     "build": "tsc",
