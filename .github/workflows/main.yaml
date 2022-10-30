@@ -46,10 +46,17 @@ jobs:
     if: ${{ needs.pre-commit.result == 'success' }}
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      contents: write
+      packages: write
+      issues: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.5.1
         with:
           node-version: 14.18.1
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@shahradr"
       - name: Release
         run: npx semantic-release@v18.0.0
