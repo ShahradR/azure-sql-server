@@ -61,6 +61,10 @@ export class MsSQLConstruct extends Construct {
       skuName: "standard",
       tenantId: config.tenantId,
       accessPolicy: config.keyVaultAccessPolicy,
+      networkAcls: {
+        defaultAction: "Deny",
+        bypass: "AzureServices",
+      },
     });
 
     this.mssqlDatabasePasswordSecret = new KeyVaultSecret(
