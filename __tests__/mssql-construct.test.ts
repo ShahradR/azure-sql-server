@@ -180,6 +180,17 @@ describe("given a synthesized Terraform configuration", () => {
           ],
         });
       });
+
+      it("should only allow Azure Services access to the secret", () => {
+        expect.assertions(1);
+
+        expect(construct).toHaveResourceWithProperties(KeyVault, {
+          network_acls: {
+            default_action: "Deny",
+            bypass: "AzureServices",
+          },
+        });
+      });
     });
 
     describe("a Key Vault Secret for the SQL Server database login", () => {
