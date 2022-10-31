@@ -46,6 +46,7 @@ jobs:
     if: ${{ needs.pre-commit.result == 'success' }}
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: write
       packages: write
