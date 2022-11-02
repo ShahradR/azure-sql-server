@@ -13,3 +13,6 @@ npm install -g cdktf-cli@next
 
 # Install the Azure CLI
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+# Install the Infracost CLI
+curl -fsSL https://raw.githubusercontent.com/infracost/infracost/v0.10.13/scripts/install.sh | sh
