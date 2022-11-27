@@ -8,4 +8,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends vim python3-pip
 
+# Install tflint
+RUN curl -s https://raw.githubusercontent.com/terraform-linters/tflint/v0.43.0/install_linux.sh | bash
+
 RUN pip install pre-commit detect-secrets checkov
