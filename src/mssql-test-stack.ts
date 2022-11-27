@@ -18,24 +18,28 @@ class MsSQLStack extends TerraformStack {
       },
     });
 
-    const serverName = new TerraformVariable(this, "serverName", {
+    const serverName = new TerraformVariable(this, "server_name", {
       type: "string",
       description: "The name of the Microsoft SQL Server server.",
     });
 
-    const keyVaultName = new TerraformVariable(this, "keyVaultName", {
+    const keyVaultName = new TerraformVariable(this, "key_vault_name", {
       type: "string",
       description: "The name of the Microsoft SQL Server key vault.",
     });
 
-    const resourceGroupName = new TerraformVariable(this, "resourceGroupName", {
-      type: "string",
-      description: "The name of the resource group.",
-    });
+    const resourceGroupName = new TerraformVariable(
+      this,
+      "resource_group_name",
+      {
+        type: "string",
+        description: "The name of the resource group.",
+      }
+    );
 
     const administratorLogin = new TerraformVariable(
       this,
-      "administratorLogin",
+      "administrator_login",
       {
         type: "string",
         description: "The administrator login for the Microsoft SQL server.",
@@ -43,7 +47,10 @@ class MsSQLStack extends TerraformStack {
       }
     );
 
-    const azureClientConfig = new DataAzurermClientConfig(this, "clientConfig");
+    const azureClientConfig = new DataAzurermClientConfig(
+      this,
+      "client_config"
+    );
 
     const keyVaultPolicy: KeyVaultAccessPolicy = {
       objectId: azureClientConfig.objectId,

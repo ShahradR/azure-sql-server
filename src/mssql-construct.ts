@@ -44,17 +44,21 @@ export class MsSQLConstruct extends Construct {
 
     new RandomProvider(this, "random", {});
 
-    const mssqlDatabasePassword = new Password(this, "mssqlDatabasePassword", {
-      length: 16,
-      special: true,
-    } as PasswordConfig);
+    const mssqlDatabasePassword = new Password(
+      this,
+      "mssql_database_password",
+      {
+        length: 16,
+        special: true,
+      } as PasswordConfig
+    );
 
-    this.mssqlDatabaseRG = new ResourceGroup(this, "mssqlDatabaseRG", {
+    this.mssqlDatabaseRG = new ResourceGroup(this, "mssql_database_rg", {
       name: config.resourceGroupName,
       location: "canadacentral",
     });
 
-    this.mssqlDatabaseVaultCredentials = new KeyVault(this, "mssqlKeyVault", {
+    this.mssqlDatabaseVaultCredentials = new KeyVault(this, "mssql_key_vault", {
       location: "canadacentral",
       name: config.keyVaultName,
       resourceGroupName: this.mssqlDatabaseRG.name,
@@ -69,7 +73,7 @@ export class MsSQLConstruct extends Construct {
 
     this.mssqlDatabasePasswordSecret = new KeyVaultSecret(
       this,
-      "mssqlDatabasePasswordSecret",
+      "mssql_database_password_secret",
       {
         keyVaultId: this.mssqlDatabaseVaultCredentials.id,
         name: "mssqlPassword",
@@ -79,7 +83,7 @@ export class MsSQLConstruct extends Construct {
 
     this.mssqlDatabaseLoginSecret = new KeyVaultSecret(
       this,
-      "mssqlDatabaseLoginSecret",
+      "mssql_database_login_secret",
       {
         keyVaultId: this.mssqlDatabaseVaultCredentials.id,
         name: "mssqlLogin",
@@ -87,7 +91,7 @@ export class MsSQLConstruct extends Construct {
       }
     );
 
-    this.mssqlServer = new MssqlServer(this, "mssqlServer", {
+    this.mssqlServer = new MssqlServer(this, "mssql_server", {
       name: config.serverName,
       resourceGroupName: this.mssqlDatabaseRG.name,
       location: "canadacentral",
