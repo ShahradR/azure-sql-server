@@ -42,7 +42,7 @@ jobs:
         run: $GITHUB_WORKSPACE/src/resources/hcl2-convert.sh
       - name: Run Bridgecrew scan
         id: Bridgecrew
-        uses: bridgecrewio/bridgecrew-action@v1.1973.0
+        uses: bridgecrewio/bridgecrew-action@v1.1975.0
         with:
           api-key: ${{ secrets.BRIDGECREW_API_KEY }}
           directory: /home/runner/work/azure-sql-server/azure-sql-server/cdktf.out/
